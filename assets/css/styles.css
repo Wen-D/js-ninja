@@ -10,6 +10,8 @@ body {
 }
 
 .wrapper {
+  height: 100%;
+  background-color: #eff1f6;
   padding: 1rem 1rem 0 1rem;
 }
 
@@ -20,6 +22,30 @@ body {
 .btn-outline-primary:hover {
   background-color: #5172aa;
   border-color: #5172aa;
+}
+
+.btn-skip {
+  background-color: #5172aa;
+  border-radius: 25px;
+  width: 45px;
+  height: 45px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -1px;
+  color: #f9fafc;
+}
+
+.btn-skip:hover {
+  color: #fff;
+  box-shadow: 0px 0px 9px #6b6b6b;
+}
+
+.justify-content-flex-end {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 1.5rem;
 }
 
 .logo-wrapper {
@@ -38,7 +64,7 @@ body {
 }
 
 .container-fluid {
-  height: 78vh;
+  height: calc(100% - 176px);
   background-color: #f9fafc;
   border-radius: 2rem 2rem 0 0;
 }
@@ -65,14 +91,14 @@ body {
 }
 
 .trivia-main {
-  height: 74%;
+  height: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .main {
-  height: 88%;
+  height: 100.7%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,7 +150,7 @@ body {
 }
 
 .correct-answers {
-  height: 88%;
+  height: 100%;
   overflow-y: auto;
 }
 
@@ -145,3 +171,31 @@ body {
   background-color: #223465;
   color: white;
 }
+.state{
+  max-width: 550px;
+  margin: auto;
+}
+.alert-wrapper{
+  overflow: hidden;
+}
+.alert{
+  max-width: 90px;
+  text-align: center;
+  right: 0px;
+  clear: right;
+  display: block;
+  float: right;
+  border-radius: 50px;
+}
+svg{
+  margin-right: 10px;
+}
+.fa-check{
+  color: #155724
+}
+.fa-times-circle {
+  color: red;
+}
+.your-answer{
+  font-weight: bold;
+} 
