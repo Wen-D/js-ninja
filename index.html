@@ -46,7 +46,7 @@
 
       <!-- Home State -->
       <div class="container-fluid">
-        <div class="state-home" data-bind="visible: currentState() == 'home'">
+        <div class="state-home state" data-bind="visible: currentState() == 'home'">
           <div class="container">
             <div class="label">Please Enter Your Name</div>
             <div>
@@ -69,7 +69,7 @@
 
         <!-- Trivia View -->
         <div
-          class="state-trivia"
+          class="state-trivia state"
           data-bind="visible: currentState() == 'trivia'"
         >
           <div class="header align-items">
@@ -86,11 +86,15 @@
               class="trivia-count"
             ></div>
             <div>
-              <strong data-bind="text: jsNinja"></strong>
+              <a href="javascript:void(0);" data-bind="click: toState" type="button" class="btn btn-skip"><i class="fas fa-chevron-right"></i></a>
             </div>
           </div>
+          <div class="justify-content-flex-end">
+            <strong data-bind="text: jsNinja"></strong>
+          </div>
 
-          <hr />
+          
+          
           <div class="trivia-main">
             <div class="container">
               <h5
@@ -139,9 +143,23 @@
 
         <!-- Result View -->
         <div
-          class="state-result"
+          class="state-result state"
           data-bind="visible: currentState() == 'result'"
         >
+          <div class="header align-items">
+            <button
+              data-bind="click: toState"
+              data-value="reset"
+              type="button"
+              class="btn btn-danger"
+            >
+              Reset
+            </button>
+            <div class="justify-content-flex-end">
+              <strong data-bind="text: jsNinja"></strong>
+            </div>
+          </div>
+          
           <div class="main">
             <div>
               <div class="rank" data-bind="text: rank"></div>
@@ -175,42 +193,78 @@
           class="state-result"
           data-bind="visible: currentState() == 'review'"
         >
+        <div class="header align-items">
+          <button
+            data-bind="click: toState"
+            data-value="reset"
+            type="button"
+            class="btn btn-danger"
+          >
+            Reset
+          </button>
+          <div class="justify-content-flex-end">
+            <strong data-bind="text: jsNinja"></strong>
+          </div>
+        </div>
+
           <div class="correct-answers">
             <div data-bind="foreach: data">
               <div class="data-tile">
-                <h5 data-bind="text: question"></h5>
-                <div data-bind="foreach: options">
-                  <div>
-                    <!-- ko if: isCorrect -->
-                    <i class="far fa-dot-circle"></i>
+                <div class="alert-wrapper">
+                    <!-- ko if: $data.answered -->
+                      <div class="alert alert-success ">Correct</div>
                     <!-- /ko -->
-                    <!-- ko ifnot: isCorrect -->
-                    <i class="far fa-circle"></i>
+                    <!-- ko ifnot: $data.answered -->
+                      <div class="alert alert-danger">Incorrect</div>
                     <!-- /ko -->
-                    &nbsp;&nbsp;<span data-bind="text: name"></span>
-                  </div>
+                </div>  
+              <div data-bind="visible: $data.answered"></div>
+              
+              <h5 data-bind="text: question"></h5>
+              <div data-bind="foreach: options">
+                <div>
+                  <!-- ko if: isCorrect -->
+                    
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                  <!-- /ko -->
+                  <!-- ko ifnot: isCorrect -->
+                     
+                      <i class="far fa-times-circle"></i>
+                  <!-- /ko -->
+                  <span data-bind="text: name"></span>
                 </div>
+              
+              </div> 
+              <div>
+                <span class="your-answer">Your answer: </span>
+                <!-- ko if: userAnswer -->
+                <i class="far fa-dot-circle"></i><span data-bind="text: userAnswer"></span>
+                <!-- /ko -->
+                <!-- ko ifnot: userAnswer -->
+                  Blank - No answer
+                <!-- /ko -->
               </div>
             </div>
+             
           </div>
-          <div class="footer align-items">
-            <button
-              data-bind="click: toState"
-              data-value="try-again"
-              type="button"
-              class="btn btn-outline-primary"
-            >
-              Try Again
-            </button>
-            <button
-              data-bind="click: toState"
-              data-value="reset"
-              type="button"
-              class="btn btn-danger"
-            >
-              Reset
-            </button>
-          </div>
+        </div>
+        <div class="footer align-items">
+          <button
+            data-bind="click: toState"
+            data-value="try-again"
+            type="button"
+            class="btn btn-outline-primary"
+          >
+            Try Again
+          </button>
+          <button
+            data-bind="click: toState"
+            data-value="reset"
+            type="button"
+            class="btn btn-danger"
+          >
+            Reset
+          </button>
         </div>
       </div>
     </div>
